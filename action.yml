@@ -6,7 +6,11 @@ inputs:
     required: true
     default: 'Pifile'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.pifile }}
+  using: "composite"
+  steps: 
+    - run: sudo apt-get update
+      shell: bash
+    - run: sudo apt-get install -y binfmt-support file kpartx parted qemu qemu-user-static unzip p7zip-full wget xz-utils
+      shell: bash
+    - run: sudo ${{ github.action_path }}/pimod.sh ${{ inputs.pifile }}
+      shell: bash
