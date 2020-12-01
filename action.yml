@@ -1,0 +1,12 @@
+name: 'pimod'
+description: 'Reconfigure Raspberry Pi images with an easy, Docker-like configuration file'
+inputs:
+  pifile:
+    description: 'Pifile to run'
+    required: true
+    default: 'Pifile'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.pifile }}

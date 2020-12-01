@@ -26,4 +26,4 @@ ENV PATH="/pimod:${PATH}"
 ENV PIMOD_CACHE=".cache"
 
 WORKDIR /pimod
-CMD pimod.sh Pifile
+ENTRYPOINT ["/pimod/pimod.sh"]
